@@ -21,5 +21,5 @@ cd ~/dotfiles
 
 Alternatively, one can install only specific directories. This can be done the following way:
 ```sh
-stow -v -t $HOME <directory names>
+stow -v -R -t $HOME <directory names>
 ```
