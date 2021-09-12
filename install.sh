@@ -1,3 +1,5 @@
 #!/bin/sh
 
-stow -v -R -t $HOME kitty
+stow -v -R -t $HOME \
+	bash \
+	kitty
