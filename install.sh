@@ -1,3 +1,3 @@
 #!/bin/sh
 
-stow -v -t $HOME kitty
+stow -v -R -t $HOME kitty
