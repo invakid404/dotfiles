@@ -19,6 +19,8 @@ cd ~/dotfiles
 ./install.sh
 ```
 
+If ran as root, the install script will also symlink stuff from the `root` directory. Otherwise, just the configs in `home` will be installed.
+
 Alternatively, one can install only specific directories. This can be done the following way:
 ```sh
 stow -v -R -t $HOME <directory names>
