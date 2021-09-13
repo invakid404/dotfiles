@@ -16,7 +16,7 @@ cd ~/dotfiles
 
 ### Run the install script
 ```sh
-./install.sh
+./install.sh [-r]
 ```
 
 If ran with the "-r" flag, the install script will also symlink stuff from the `root` directory. Otherwise, just the configs in `home` will be installed. It will try to escalate privileges with either `doas`, `sudo`, or `su`.
