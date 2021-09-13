@@ -12,6 +12,8 @@ export GPG_TTY=$(tty)
 export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
 export PYTHONPATH="$HOME/Coding/funtoo-metatools"
 
+alias ls="exa"
+
 . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 . /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
