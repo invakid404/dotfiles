@@ -8,7 +8,7 @@ run_as_root() {
 		cmd_name=$(echo "$cmd" | head -n1 | cut -d " " -f1)
 
 		if command -v "$cmd_name" &> /dev/null; then
-			echo "Using ${cmd_name} to escalate perms"
+			echo "Using ${cmd_name} to escalate perms."
 
 			target="$cmd -- $@"
 			eval " $target"
@@ -27,8 +27,18 @@ install() {
 	echo "sh -c \"cd ${source_dir} && stow -v -R -t ${target_dir} *\""
 }
 
+do_root=0
+
+while getopts "r" opt; do
+	case "$opt" in
+		r) do_root=1;;
+	esac
+done
+
 git secret reveal -vfF || :
 
 eval " $(install home '${HOME}')"
 
-run_as_root $(install root /)
+if [ "$do_root" = 1 ]; then
+	run_as_root $(install root /)
+fi
