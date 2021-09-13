@@ -21,6 +21,8 @@ cd ~/dotfiles
 
 If ran as root, the install script will also symlink stuff from the `root` directory. Otherwise, just the configs in `home` will be installed.
 
+The script will also try to install some private config files, which are GPG-encrypted via [git-secret](https://github.com/sobolevn/git-secret). You probably won't have any luck decrypting those (unless you've hijacked my GPG key, fair play if so :D), but the script should still finish successfully regardless.
+
 Alternatively, one can install only specific directories. This can be done the following way:
 ```sh
 stow -v -R -t $HOME <directory names>
