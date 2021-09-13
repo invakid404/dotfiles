@@ -19,7 +19,7 @@ cd ~/dotfiles
 ./install.sh
 ```
 
-If ran as root, the install script will also symlink stuff from the `root` directory. Otherwise, just the configs in `home` will be installed.
+If ran with the "-r" flag, the install script will also symlink stuff from the `root` directory. Otherwise, just the configs in `home` will be installed. It will try to escalate privileges with either `doas`, `sudo`, or `su`.
 
 The script will also try to install some private config files, which are GPG-encrypted via [git-secret](https://github.com/sobolevn/git-secret). You probably won't have any luck decrypting those (unless you've hijacked my GPG key, fair play if so :D), but the script should still finish successfully regardless.
 
