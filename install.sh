@@ -11,7 +11,7 @@ install() {
 	sh -c "cd ${source_dir} && stow -v -R -t ${target_dir} *"
 }
 
-git secret reveal -vfF
+git secret reveal -vfF || :
 
 install home "${HOME}"
 
