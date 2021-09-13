@@ -12,8 +12,10 @@ export GPG_TTY=$(tty)
 export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
 export PYTHONPATH="$HOME/Coding/funtoo-metatools"
 
-eval "$(starship init zsh)"
+. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+eval "$(starship init zsh)"
 
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -e "/usr/lib64/kitty/shell-integration/kitty.zsh"; then source "/usr/lib64/kitty/shell-integration/kitty.zsh"; fi
