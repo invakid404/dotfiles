@@ -1,17 +1,18 @@
 #!/bin/sh
 
 run_as_root() {
-	cmds="doas,sudo,su root -c"
-	IFS="," read -ra cmd_arr <<< "$cmds"
+	doas="doas"
+	sudo="sudo"
+	su="su root -c"
 
-	for cmd in "${cmd_arr[@]}"; do
-		cmd_name=$(echo "$cmd" | head -n1 | cut -d " " -f1)
+	for cmd in "${doas}" "${sudo}" "${su}"; do
+		cmd_name=$(echo "${cmd}" | head -n1 | cut -d " " -f1)
 
-		if command -v "$cmd_name" &> /dev/null; then
+		if command -v "${cmd_name}" > /dev/null 2>&1; then
 			echo "Using ${cmd_name} to escalate perms."
 
-			target="$cmd -- $@"
-			eval " $target"
+			target="${cmd} -- ${@}"
+			eval " ${target}"
 
 			return
 		fi
@@ -30,15 +31,18 @@ install() {
 do_root=0
 
 while getopts "r" opt; do
-	case "$opt" in
-		r) do_root=1;;
+	case "${opt}" in
+		r) 	do_root=1;;
+		*) 	echo >&2 "Usage: ${0} [-r]"
+			exit 1;
 	esac
 done
 
 git secret reveal -vfF || :
 
-eval " $(install home '${HOME}')"
+home_install=$(install home "${HOME}")
+eval " ${home_install}"
 
-if [ "$do_root" = 1 ]; then
-	run_as_root $(install root /)
+if [ "${do_root}" = 1 ]; then
+	run_as_root "$(install root /)"
 fi
