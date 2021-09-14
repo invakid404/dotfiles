@@ -1,0 +1,6 @@
+#!/bin/sh
+
+gsettings set org.mate.session gnome-compat-startup "['smproxy']"
+
+grep -lrIZ gnome-keyring /etc/xdg/autostart | xargs -0 doas rm -f --
+grep -lrIZ gnome-keyring /usr/share/dbus-1/services | xargs -0 doas rm -f --
