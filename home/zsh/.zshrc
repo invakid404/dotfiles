@@ -9,8 +9,11 @@ autoload -Uz compinit
 compinit
 
 export GPG_TTY=$(tty)
+
 export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
 export PYTHONPATH="$HOME/Coding/funtoo-metatools"
+
+export PATH="$HOME/.local/bin:$PATH"
 
 alias ls="exa"
 
