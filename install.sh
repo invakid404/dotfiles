@@ -32,8 +32,8 @@ do_root=0
 
 while getopts "r" opt; do
 	case "${opt}" in
-		r) 	do_root=1;;
-		*) 	echo >&2 "Usage: ${0} [-r]"
+		r)	do_root=1;;
+		*)	echo >&2 "Usage: ${0} [-r]"
 			exit 1;
 	esac
 done
