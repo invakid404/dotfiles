@@ -25,7 +25,7 @@ install() {
 	source_dir=$1
 	target_dir=$2
 
-	echo "sh -c \"cd ${source_dir} && stow -v -R -t ${target_dir} *\""
+	echo "sh -c \"cd ${source_dir} && stow -v -R --ignore='^.*\\.secret$' --no-folding -t ${target_dir} *\""
 }
 
 do_root=0
