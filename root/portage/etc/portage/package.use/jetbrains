@@ -1,3 +1,4 @@
 dev-util/goland -system-java
 dev-util/webstorm -system-java
 dev-util/pycharm-professional -system-java
+dev-util/idea-ultimate -system-java
