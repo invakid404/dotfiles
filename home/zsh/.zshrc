@@ -15,6 +15,8 @@ export PYTHONPATH="$HOME/Coding/funtoo-metatools"
 
 export PATH="$HOME/.local/bin:$PATH"
 
+PATH="$HOME/.deno/bin:$PATH"
+
 alias ls="exa"
 
 . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
