@@ -6,6 +6,9 @@ vicmd_symbol = "[λ](bold green)"
 [battery]
 disabled = true
 
+[gcloud]
+disabled = true
+
 [git_commit]
 tag_symbol = " tag "
 
