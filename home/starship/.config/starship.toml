@@ -3,6 +3,13 @@ success_symbol = "[λ](bold green)"
 error_symbol = "[λ](bold red)"
 vicmd_symbol = "[λ](bold green)"
 
+[username]
+format = "[$user]($style) at "
+show_always = true
+
+[hostname]
+ssh_only = false
+
 [battery]
 disabled = true
 
