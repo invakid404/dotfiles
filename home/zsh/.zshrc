@@ -18,6 +18,7 @@ export PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.deno/bin:$PATH"
 
 alias ls="exa"
+alias emacs="emacs -nw"
 
 . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
