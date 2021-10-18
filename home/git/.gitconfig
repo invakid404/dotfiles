@@ -7,7 +7,7 @@
 [url "ssh://git@code.funtoo.org:7999/"]
 	insteadOf = "https://code.funtoo.org/bitbucket/scm/"
 [core]
-	editor = emacs
+	editor = emacs -nw
 [commit]
 	gpgsign = true
 [init]
