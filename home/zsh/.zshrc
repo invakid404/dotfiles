@@ -31,6 +31,8 @@ bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 bindkey '^[[3~' delete-char
 
+setopt auto_cd
+
 eval "$(starship init zsh)"
 
 
