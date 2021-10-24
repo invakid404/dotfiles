@@ -1,4 +1,7 @@
+storage.lock
+
 .gitsecret/keys/random_seed
 !*.secret
 home/rclone/.config/rclone/rclone.conf
 home/metatools/.autogen
+
