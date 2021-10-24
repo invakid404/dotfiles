@@ -19,6 +19,7 @@ PATH="$HOME/.deno/bin:$PATH"
 
 alias ls="exa"
 alias emacs="emacs -nw"
+alias ssh="kitty +kitten ssh"
 
 . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
