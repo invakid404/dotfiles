@@ -3,6 +3,7 @@
 FOLDED_SYMLINKS="
 	dconf
 	git-templates
+	qbittorrent
 "
 
 run_as_root() {
