@@ -1,5 +1,10 @@
 #!/bin/sh
 
+FOLDED_SYMLINKS="
+	dconf
+	git-templates
+"
+
 run_as_root() {
 	doas="doas"
 	sudo="sudo"
@@ -26,13 +31,26 @@ install() {
 	target_dir=$2
 	extra_args=$3
 
-	install_cmd="sh -c \"cd ${source_dir} && stow -v -R --ignore='^.*\\.secret$' --no-folding -t ${target_dir} *\""
+	find "${source_dir}" -mindepth 1 -maxdepth 1 -type d -printf '%P\n' > tmp
 
-	if [ "${extra_args}" = "as_root" ]; then
-		run_as_root "${install_cmd}"
-	else
-		eval " ${install_cmd}"
-	fi
+	while IFS="$(printf '\n')" read -r child_dir; do
+		install_cmd="stow -v -R --ignore='^.*\\.secret$'"
+
+		case "${FOLDED_SYMLINKS}" in
+			*"${child_dir}"*)	;;
+			*)	install_cmd="${install_cmd} --no-folding" ;;
+		esac
+
+		install_cmd="sh -c \"cd ${source_dir} && ${install_cmd} -t ${target_dir} ${child_dir}\""
+
+		if [ "${extra_args}" = "as_root" ]; then
+			run_as_root "${install_cmd}"
+		else
+			eval " ${install_cmd}"
+		fi
+	done < tmp
+
+	rm tmp
 }
 
 do_root=0
