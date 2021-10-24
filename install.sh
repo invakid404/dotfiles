@@ -24,8 +24,15 @@ run_as_root() {
 install() {
 	source_dir=$1
 	target_dir=$2
+	extra_args=$3
 
-	echo "sh -c \"cd ${source_dir} && stow -v -R --ignore='^.*\\.secret$' --no-folding -t ${target_dir} *\""
+	install_cmd="sh -c \"cd ${source_dir} && stow -v -R --ignore='^.*\\.secret$' --no-folding -t ${target_dir} *\""
+
+	if [ "${extra_args}" = "as_root" ]; then
+		run_as_root "${install_cmd}"
+	else
+		eval " ${install_cmd}"
+	fi
 }
 
 do_root=0
@@ -40,9 +47,8 @@ done
 
 git secret reveal -vfF || :
 
-home_install=$(install home "${HOME}")
-eval " ${home_install}"
+install home "${HOME}"
 
 if [ "${do_root}" = 1 ]; then
-	run_as_root "$(install root /)"
+	install root / as_root
 fi
