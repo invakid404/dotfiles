@@ -1,5 +1,3 @@
-call plug#begin()
+lua require('plugins')
 
-Plug 'terryma/vim-multiple-cursors'
-
-call plug#end()
+source $HOME/.config/nvim/themes/onedark.vim
