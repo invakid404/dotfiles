@@ -9,3 +9,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
+
+" Wrap text to 80 columns
+set textwidth=80
