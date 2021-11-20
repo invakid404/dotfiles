@@ -21,6 +21,8 @@ return require('packer').startup(function()
 
   use {'neoclide/coc.nvim', branch = 'release'}
 
+  use 'mg979/vim-visual-multi'
+
   use 'tpope/vim-fugitive'
 
   use 'jiangmiao/auto-pairs'
