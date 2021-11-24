@@ -7,5 +7,5 @@ num_devices="1"
 type0="swap"
 flag0=
 size0="4096"
-maxs0=12
+maxs0=$(nproc)
 algo0=lz4
