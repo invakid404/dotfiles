@@ -1,0 +1,28 @@
+From dead8da48348eb85a7396c20be08b79daaeec6da Mon Sep 17 00:00:00 2001
+From: invakid404 <invakid404@riseup.net>
+Date: Sun, 19 Dec 2021 17:00:26 +0200
+Subject: [PATCH] chore: set load average to cpus by default
+
+This patch sets the `--load-average/-l` flag in MAKEOPTS by default.
+This helps reduce random crashes due to extremely high load and is a
+reasonable default IMHO.
+---
+ lib/portage/package/ebuild/doebuild.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/portage/package/ebuild/doebuild.py b/lib/portage/package/ebuild/doebuild.py
+index 3904517..371a768 100644
+--- a/lib/portage/package/ebuild/doebuild.py
++++ b/lib/portage/package/ebuild/doebuild.py
+@@ -514,7 +514,7 @@ def doebuild_environment(myebuild, mydo, myroot=None, settings=None,
+ 		if 'MAKEOPTS' not in mysettings:
+ 			nproc = get_cpu_count()
+ 			if nproc:
+-				mysettings['MAKEOPTS'] = '-j%d' % (nproc)
++				mysettings['MAKEOPTS'] = '-j{0} -l{0}'.format(nproc)
+ 
+ 		if not eapi_exports_KV(eapi):
+ 			# Discard KV for EAPIs that don't support it. Cached KV is restored
+-- 
+2.34.1
+
