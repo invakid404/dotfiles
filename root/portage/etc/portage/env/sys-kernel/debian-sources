@@ -1,3 +1,4 @@
+#!/bin/bash
 if [ "${EBUILD_PHASE}" == "compile" ]; then
 	tweak_config "${T}"/config CONFIG_LOGO y
 fi
