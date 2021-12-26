@@ -18,7 +18,6 @@ export PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.deno/bin:$PATH"
 
 alias ls="exa"
-alias emacs="emacs -nw"
 alias ssh="kitty +kitten ssh"
 alias clip="kitty +kitten clipboard"
 
