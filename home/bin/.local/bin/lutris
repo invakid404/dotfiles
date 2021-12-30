@@ -2,3 +2,4 @@
 
 lxc start lol-ubuntu &>/dev/null
 lxc exec lol-ubuntu -- bash -c "su ubuntu -c lutris"
+lxc stop lol-ubuntu
