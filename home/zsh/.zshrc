@@ -10,9 +10,6 @@ compinit
 
 export GPG_TTY=$(tty)
 
-export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
-export PYTHONPATH="$HOME/Coding/subpop:$HOME/Coding/funtoo-metatools"
-
 export PATH="$HOME/.local/bin:$PATH"
 
 PATH="$HOME/.deno/bin:$PATH"
