@@ -1,2 +1,0 @@
-#!/bin/sh
-docker exec -it dev-env_redis_1 redis-cli $@
