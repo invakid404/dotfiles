@@ -36,8 +36,3 @@ bindkey '^[[3~' delete-char
 setopt auto_cd
 
 eval "$(starship init zsh)"
-
-
-# BEGIN_KITTY_SHELL_INTEGRATION
-if test -e "/usr/lib64/kitty/shell-integration/kitty.zsh"; then source "/usr/lib64/kitty/shell-integration/kitty.zsh"; fi
-# END_KITTY_SHELL_INTEGRATION
