@@ -36,3 +36,10 @@ bindkey '^[[3~' delete-char
 setopt auto_cd
 
 eval "$(starship init zsh)"
+
+if test -n "$KITTY_INSTALLATION_DIR"; then
+    export KITTY_SHELL_INTEGRATION="enabled"
+    autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+    kitty-integration
+    unfunction kitty-integration
+fi
