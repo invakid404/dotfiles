@@ -112,3 +112,6 @@ symbol = "scala "
 
 [swift]
 symbol = "swift "
+
+[zig]
+symbol = "zig "
