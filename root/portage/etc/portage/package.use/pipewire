@@ -1,0 +1,3 @@
+*/* pipewire
+media-video/pipewire pipewire-alsa
+media-sound/pulseaudio -alsa-plugin
