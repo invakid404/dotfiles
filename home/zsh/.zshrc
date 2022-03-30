@@ -11,6 +11,7 @@ compinit
 export GPG_TTY=$(tty)
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/Coding/flutter/bin:$PATH"
 
 PATH="$HOME/.deno/bin:$PATH"
 
