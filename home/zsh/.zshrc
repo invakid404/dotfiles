@@ -13,17 +13,30 @@ export GPG_TTY=$(tty)
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/Coding/flutter/bin:$PATH"
+export PATH="$HOME/.deno/bin:$PATH"
 
-PATH="$HOME/.deno/bin:$PATH"
+which -s brew >/dev/null 2>&1
+if [[ $? == 0 ]] ; then
+	local brew_prefix=$(brew --prefix)
+
+	export PATH="${brew_prefix}/opt/findutils/libexec/gnubin:$PATH"
+
+	# Prioritize things in /usr/local/bin
+	export PATH="/usr/local/bin:$PATH"
+
+	. "${brew_prefix}"/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+	. "${brew_prefix}"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	. "${brew_prefix}"/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+else
+	. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+fi
 
 alias ls="exa"
 alias ssh="kitty +kitten ssh"
 alias clip="kitty +kitten clipboard"
 alias nyx="doas -u tor nyx"
-
-. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
