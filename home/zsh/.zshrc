@@ -14,6 +14,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/Coding/flutter/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 which -s brew >/dev/null 2>&1
 if [[ $? == 0 ]] ; then
