@@ -1,2 +1,14 @@
 {
+    "ISOs": {
+        "download_path": "",
+        "save_path": ""
+    },
+    "Movies": {
+        "download_path": "",
+        "save_path": ""
+    },
+    "VSTs": {
+        "download_path": "",
+        "save_path": "/run/media/inva/2CC464E933B910F6/Torrents"
+    }
 }
