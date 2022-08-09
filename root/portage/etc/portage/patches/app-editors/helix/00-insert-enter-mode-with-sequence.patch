@@ -1,0 +1,14 @@
+diff --git a/helix-term/src/ui/editor.rs b/helix-term/src/ui/editor.rs
+index d99f1a4e..490882b5 100644
+--- a/helix-term/src/ui/editor.rs
++++ b/helix-term/src/ui/editor.rs
+@@ -1206,6 +1206,9 @@ fn handle_event(
+ 
+                         self.last_insert.0 = match self.keymaps.get(mode, key) {
+                             KeymapResult::Matched(command) => command,
++                            KeymapResult::MatchedSequence(commands) => {
++                                commands.last().unwrap().clone()
++                            }
+                             // FIXME: insert mode can only be entered through single KeyCodes
+                             _ => unimplemented!(),
+                         };
