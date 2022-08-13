@@ -6,7 +6,17 @@ FOLDED_SYMLINKS="
 	qbittorrent
 "
 
+is_root="false"
+if [ "$(id -u)" = "0" ]; then
+	is_root="true"
+fi
+
 run_as_root() {
+	if [ "${is_root}" = "true" ]; then
+		eval "${@}"
+		return
+	fi
+
 	doas="doas"
 	sudo="sudo"
 	su="su root -c"
@@ -64,9 +74,12 @@ while getopts "r" opt; do
 	esac
 done
 
-git secret reveal -vfF || :
 
-install home "${HOME}"
+if [ "${is_root}" = "false" ]; then
+	git secret reveal -vfF || :
+
+	install home "${HOME}"
+fi
 
 if [ "${do_root}" = 1 ]; then
 	install root / as_root
