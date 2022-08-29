@@ -16,6 +16,7 @@ export PATH="$HOME/Coding/flutter/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+
 which -s brew >/dev/null 2>&1
 if [[ $? == 0 ]] ; then
 	local brew_prefix=$(brew --prefix)
@@ -32,6 +33,9 @@ else
 	. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 	. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+    export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
+    export PYTHONPATH="$HOME/Coding/subpop:$HOME/Coding/funtoo-metatools"
 fi
 
 alias ls="exa"
