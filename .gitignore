@@ -7,3 +7,4 @@ home/rclone/.config/rclone/rclone.conf
 home/metatools/.autogen
 
 home/git/.gitconfig.wr
+home/git/.gitconfig
