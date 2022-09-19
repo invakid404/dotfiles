@@ -1,7 +1,7 @@
 [[language]]
 name = "javascript"
 auto-format = true
-formatter = { command = "prettier", args = ["--parser", "javascript"] }
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
 
 [[language]]
 name = "typescript"
