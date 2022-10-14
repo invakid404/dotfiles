@@ -12,3 +12,7 @@ formatter = { command = "prettier", args = ["--parser", "typescript"] }
 name = "yaml"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "yaml"] }
+
+[[language]]
+name = "python"
+auto-format = true
