@@ -21,3 +21,8 @@ auto-format = true
 name = "json"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "json"] }
+
+[[language]]
+name = "html"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "html"] }
