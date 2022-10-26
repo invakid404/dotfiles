@@ -26,3 +26,8 @@ formatter = { command = "prettier", args = ["--parser", "json"] }
 name = "html"
 auto-format = true
 formatter = { command = "prettier", args = ["--parser", "html"] }
+
+[[language]]
+name = "cpp"
+auto-format = true
+formatter = { command = "clang-format" }
