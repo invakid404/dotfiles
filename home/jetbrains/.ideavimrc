@@ -1,1 +1,3 @@
 set multiple-cursors
+
+map <c-x> <Action>(ShowErrorDescription)
