@@ -28,6 +28,11 @@ auto-format = true
 formatter = { command = "prettier", args = ["--parser", "html"] }
 
 [[language]]
+name = "markdown"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "markdown", "--prose-wrap", "always"] }
+
+[[language]]
 name = "cpp"
 auto-format = true
 formatter = { command = "clang-format" }
