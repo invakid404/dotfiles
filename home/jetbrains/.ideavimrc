@@ -1,3 +1,5 @@
 set multiple-cursors
+set ignorecase
+set smartcase
 
 map <c-x> <Action>(ShowErrorDescription)
