@@ -5,3 +5,7 @@ mouse = false
 
 [editor.cursor-shape]
 insert = "bar"
+
+[keys.normal]
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
