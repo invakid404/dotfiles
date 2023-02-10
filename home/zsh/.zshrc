@@ -43,7 +43,7 @@ alias ssh="kitty +kitten ssh"
 alias clip="kitty +kitten clipboard"
 alias nyx="doas -u tor nyx"
 
-alias cdr="cd $(git rev-parse --show-toplevel)"
+alias cdr='cd $(git rev-parse --show-toplevel)'
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
