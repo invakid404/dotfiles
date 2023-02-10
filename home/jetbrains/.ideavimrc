@@ -1,5 +1,6 @@
 set multiple-cursors
 set ignorecase
 set smartcase
+set ideajoin
 
 map <c-x> <Action>(ShowErrorDescription)
