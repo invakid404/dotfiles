@@ -42,6 +42,7 @@ alias ls="exa"
 alias ssh="kitty +kitten ssh"
 alias clip="kitty +kitten clipboard"
 alias nyx="doas -u tor nyx"
+alias hg="kitty +kitten hyperlinked_grep"
 
 alias cdr='cd $(git rev-parse --show-toplevel)'
 
