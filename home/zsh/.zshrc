@@ -17,26 +17,14 @@ export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 
-which -s brew >/dev/null 2>&1
-if [[ $? == 0 ]] ; then
-	local brew_prefix=$(brew --prefix)
+. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-	export PATH="${brew_prefix}/opt/findutils/libexec/gnubin:$PATH"
+export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
+export PYTHONPATH="$HOME/Coding/subpop:$HOME/Coding/funtoo-metatools"
 
-	# Prioritize things in /usr/local/bin
-	export PATH="/usr/local/bin:$PATH"
-
-	. "${brew_prefix}"/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	. "${brew_prefix}"/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	. "${brew_prefix}"/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-else
-	. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-	. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-
-    export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
-    export PYTHONPATH="$HOME/Coding/subpop:$HOME/Coding/funtoo-metatools"
-fi
+alias hg="kitty +kitten hyperlinked_grep"
 
 alias ls="exa"
 alias ssh="kitty +kitten ssh"
