@@ -22,6 +22,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 . /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
+export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
 export PYTHONPATH="$HOME/Coding/subpop:$HOME/Coding/funtoo-metatools"
 
 alias hg="kitty +kitten hyperlinked_grep"
