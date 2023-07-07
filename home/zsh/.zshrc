@@ -47,6 +47,10 @@ bindkey '^[[3~' delete-char
 
 setopt auto_cd
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 eval "$(starship init zsh)"
 
 if test -n "$KITTY_INSTALLATION_DIR"; then
