@@ -1,5 +1,3 @@
 #!/usr/bin/env sh
 
-lxc start steam-ubuntu &>/dev/null
-lxc exec steam-ubuntu -- bash -c "su ubuntu -c steam"
-lxc stop steam-ubuntu
+flatpak run com.valvesoftware.Steam
