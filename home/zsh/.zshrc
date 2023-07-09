@@ -16,7 +16,6 @@ export PATH="$HOME/Coding/flutter/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-
 . /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 . /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
