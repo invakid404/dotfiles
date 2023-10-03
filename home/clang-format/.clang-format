@@ -1,9 +1,9 @@
 ﻿---
 BasedOnStyle: Chromium
-AccessModifierOffset: '-4'
-ContinuationIndentWidth: '4'
+AccessModifierOffset: '-2'
+ContinuationIndentWidth: '2'
 IndentCaseLabels: 'false'
-IndentWidth: '4'
-TabWidth: '4'
+IndentWidth: '2'
+TabWidth: '2'
 
 ...
