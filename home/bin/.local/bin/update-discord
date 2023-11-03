@@ -1,0 +1,10 @@
+#!/bin/sh
+
+pushd /var/git/meta-repo/kits/net-kit/net-im/discord-bin
+sudo chown -R 1000:1000 .
+doit
+sudo chown -R portage:portage .
+sudo emerge -1au discord-bin
+sudo -u portage git clean -fd
+sudo -u portage git reset --hard HEAD
+popd
