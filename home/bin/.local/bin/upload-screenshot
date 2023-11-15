@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+BASE_URL="https://img.qilin-qilin.ts.net"
+FILENAME="$(date -u +%Y-%m-%d_%H-%M-%S)"
+
+flameshot gui -p /tmp/"${FILENAME}".png
+test -e /tmp/"${FILENAME}".png || exit
+
+echo -n "${BASE_URL}/${FILENAME}".webp | xclip -selection clipboard
+
+pushd /tmp
+convert "${FILENAME}".png -quality 90 "${FILENAME}".webp
+curl -X POST -F file="@${FILENAME}.webp;type=image/webp" "${BASE_URL}"/upload
+rm "${FILENAME}".webp "${FILENAME}".png
+popd
