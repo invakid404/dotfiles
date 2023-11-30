@@ -36,3 +36,13 @@ formatter = { command = "prettier", args = ["--parser", "markdown", "--prose-wra
 name = "cpp"
 auto-format = true
 formatter = { command = "clang-format" }
+
+[[language]]
+name = "ocaml"
+file-types = ["ml", "re", "rei"]
+auto-format = true
+formatter = { command = "refmt" }
+
+[language-server]
+ocamllsp = { command = "esy", args = ["ocamllsp"] }
+

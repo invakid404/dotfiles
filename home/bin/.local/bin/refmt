@@ -1,0 +1,7 @@
+#!/bin/bash
+FILE="$(</dev/stdin)";
+
+echo "${FILE}" | esy refmt 2>/dev/null
+if [ $? -ne 0 ]; then
+	echo "${FILE}" | esy refmt -i true
+fi
