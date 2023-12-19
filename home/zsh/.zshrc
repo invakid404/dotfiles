@@ -16,9 +16,15 @@ export PATH="$HOME/Coding/flutter/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-. /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-. /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+if command -v brew &>/dev/null; then
+    share_dir="/opt/homebrew/share"
+else
+    share_dir="/usr/share/zsh/plugins"
+fi
+
+. "$share_dir/zsh-autosuggestions/zsh-autosuggestions.zsh"
+. "$share_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+. "$share_dir/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
 export PATH="$HOME/Coding/funtoo-metatools/bin:$PATH"
 export PATH="$HOME/.local/share/JetBrains/Toolbox/scripts:$PATH"
