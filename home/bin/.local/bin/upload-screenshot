@@ -1,17 +1,38 @@
 #!/bin/bash
 
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Take Screenshot
+# @raycast.mode silent
+#
+# Optional parameters:
+# @raycast.packageName Scripts
+
 set -e
 
-BASE_URL="https://img.qilin-qilin.ts.net"
-FILENAME="$(date -u +%Y-%m-%d_%H-%M-%S)"
+# Define the filename and file path
+FILENAME="$(date -u +%Y-%m-%d_%H-%M-%S).png"
+FILEPATH="/tmp/${FILENAME}"
 
-flameshot gui -p /tmp/"${FILENAME}".png
-test -e /tmp/"${FILENAME}".png || exit
+# Check if flameshot is available
+if command -v flameshot >/dev/null 2>&1; then
+    flameshot gui -p "${FILEPATH}"
+elif command -v screencapture >/dev/null 2>&1; then
+    # Equivalent to flameshot gui -p. Saves screenshot to FILEPATH
+    screencapture -i "${FILEPATH}"
+else
+    echo "Error: Neither flameshot nor screencapture is available." >&2
+    exit 1
+fi
 
-echo -n "${BASE_URL}/${FILENAME}".webp | xclip -selection clipboard
+# Check if the screenshot was taken and exists
+if [ ! -f "${FILEPATH}" ]; then
+    echo "Screenshot was not taken."
+    exit 1
+fi
 
-pushd /tmp
-convert "${FILENAME}".png -quality 95 "${FILENAME}".webp
-curl -X POST -F file="@${FILENAME}.webp;type=image/webp" "${BASE_URL}"/upload
-rm "${FILENAME}".webp "${FILENAME}".png
-popd
+# Call the upload script
+"$HOME/.local/bin/upload-image" "${FILEPATH}"
+
+# Cleanup
+rm "${FILEPATH}"
