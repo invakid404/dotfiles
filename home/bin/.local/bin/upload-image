@@ -20,7 +20,7 @@ upload_file() {
     local webp_filename="${filename%.png}.webp"
     
     convert "$file_path" -quality 95 "/tmp/${webp_filename}"
-    echo "${BASE_URL}/${webp_filename}" | if command -v xclip >/dev/null 2>&1; then
+    echo -n "${BASE_URL}/${webp_filename}" | if command -v xclip >/dev/null 2>&1; then
         xclip -selection clipboard
     elif command -v pbcopy >/dev/null 2>&1; then
         pbcopy
