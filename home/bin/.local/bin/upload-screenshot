@@ -11,7 +11,8 @@
 set -e
 
 # Define the filename and file path
-FILENAME="$(date -u +%Y-%m-%d_%H-%M-%S).png"
+RANDOM_CHARS=$(openssl rand -base64 5 | tr -dc 'a-zA-Z0-9' | cut -c1-5)
+FILENAME="$(date -u +%Y-%m-%d_%H-%M-%S)_${RANDOM_CHARS}.png"
 FILEPATH="/tmp/${FILENAME}"
 
 # Check if flameshot is available
