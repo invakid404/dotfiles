@@ -17,7 +17,6 @@ ICON_FG: int = as_rgb(color_as_int(opts.color16))
 ICON_BG: int = as_rgb(color_as_int(opts.color8))
 
 LAYOUT_FG = 0
-LAYOUT_BG = as_rgb(color_as_int(opts.color8))
 
 
 def _draw_icon(screen: Screen, index: int) -> int:
@@ -117,7 +116,15 @@ def _draw_right_status(screen: Screen, is_last: bool) -> int:
     layout_name = get_boss().active_tab.serialize_state()["current_layout"]
 
     cells = [
-        (LAYOUT_FG, LAYOUT_BG, f" {layout_name} "),
+        (
+            as_rgb(color_as_int(opts.color16)),
+            as_rgb(
+                color_as_int(
+                    opts.color10 if layout_name == "splits" else opts.color11
+                )
+            ),
+            f" {layout_name} ",
+        ),
     ]
 
     right_status_length = 0
