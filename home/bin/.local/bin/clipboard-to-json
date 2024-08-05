@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Clipboard to JSON
+# @raycast.mode silent
+#
+# Optional parameters:
+# @raycast.packageName Scripts
+
+# Function to serialize the clipboard content as a JSON string using Python
+serialize_json() {
+  python3 -c "import json, sys; print(json.dumps(sys.stdin.read().rstrip('\n')))"
+}
+
+# Check if xclip is available (Linux)
+if command -v xclip >/dev/null 2>&1; then
+  paste_command="xclip -selection clipboard -o"
+  copy_command="xclip -selection clipboard"
+# Check if pbpaste is available (macOS)
+elif command -v pbpaste >/dev/null 2>&1; then
+  paste_command="pbpaste"
+  copy_command="pbcopy"
+else
+  echo "Neither xclip nor pbpaste found. Please install one of them."
+  exit 1
+fi
+
+# Serialize the clipboard content as a JSON string using Python
+json_string=$($paste_command | serialize_json)
+
+# Copy the JSON string back to the clipboard
+echo "$json_string" | $copy_command
+
+# Output the JSON string
+echo "$json_string"
