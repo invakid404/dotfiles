@@ -35,7 +35,7 @@ export PYTHONPATH="$HOME/Coding/subpop:$HOME/Coding/funtoo-metatools"
 
 alias hg="kitty +kitten hyperlinked_grep"
 
-alias ls="exa"
+alias ls="eza"
 alias ssh="kitty +kitten ssh"
 alias clip="kitty +kitten clipboard"
 alias nyx="doas -u tor nyx"
