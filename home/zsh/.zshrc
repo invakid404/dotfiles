@@ -16,6 +16,9 @@ export PATH="$HOME/Coding/flutter/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+export N_PREFIX="$HOME/.n"
+export PATH="$HOME/.n/bin:$PATH"
+
 if command -v brew &>/dev/null; then
     share_dir="/opt/homebrew/share"
 else
