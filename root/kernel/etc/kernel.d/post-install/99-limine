@@ -6,6 +6,6 @@ timeout: 5
 /Bedrock Linux
     protocol: linux
     kernel_path: boot():/vmlinuz-${VERSION}
-    kernel_cmdline: initramfs-${VERSION}.img root=UUID=0effed09-b824-4c6f-b9af-d94d1837a45f rw
+    kernel_cmdline: initramfs-${VERSION}.img root=UUID=$(blkid | grep LABEL=\"VROOT\" | awk -F'"' '{print $4}') rw
     module_path: boot():/initramfs-${VERSION}.img
 EOF
