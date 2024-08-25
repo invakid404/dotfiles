@@ -9,3 +9,5 @@ timeout: 5
     kernel_cmdline: initramfs-${VERSION}.img root=UUID=$(blkid | grep LABEL=\"VROOT\" | awk -F'"' '{print $4}') rw
     module_path: boot():/initramfs-${VERSION}.img
 EOF
+
+cp /usr/share/limine/BOOTX64.EFI /boot/EFI/BOOT/
