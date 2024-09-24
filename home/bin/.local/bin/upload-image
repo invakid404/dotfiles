@@ -27,7 +27,8 @@ upload_file() {
     else
         cat # Just print the URL if neither xclip nor pbcopy is available
     fi
-    curl -X POST -F file="@/tmp/${webp_filename};type=image/webp" "${BASE_URL}/upload"
+    upload_url=$(curl -X POST "https://img.qilin-qilin.ts.net/${webp_filename}" | jq -r)
+    curl -vvvv -X PUT -T "/tmp/${webp_filename}" "${upload_url}"
     rm "/tmp/${webp_filename}" # Cleanup
 }
 
