@@ -25,6 +25,8 @@ else
     share_dir="/usr/share/zsh/plugins"
 fi
 
+export HISTORY_SUBSTRING_SEARCH_FUZZY=true
+
 . "$share_dir/zsh-autosuggestions/zsh-autosuggestions.zsh"
 . "$share_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 . "$share_dir/zsh-history-substring-search/zsh-history-substring-search.zsh"
