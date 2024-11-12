@@ -26,6 +26,7 @@ else
 fi
 
 export HISTORY_SUBSTRING_SEARCH_FUZZY=true
+export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true
 
 . "$share_dir/zsh-autosuggestions/zsh-autosuggestions.zsh"
 . "$share_dir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
