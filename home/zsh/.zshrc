@@ -25,6 +25,7 @@ else
     share_dir="/usr/share/zsh/plugins"
 fi
 
+export HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="fg=red,bg=crust"
 export HISTORY_SUBSTRING_SEARCH_FUZZY=true
 export HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true
 
