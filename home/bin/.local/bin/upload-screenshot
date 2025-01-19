@@ -15,9 +15,11 @@ RANDOM_CHARS=$(openssl rand -base64 5 | tr -dc 'a-zA-Z0-9' | cut -c1-5)
 FILENAME="$(date -u +%Y-%m-%d_%H-%M-%S)_${RANDOM_CHARS}.png"
 FILEPATH="/tmp/${FILENAME}"
 
-# Check if flameshot is available
-if command -v flameshot >/dev/null 2>&1; then
-    flameshot gui -p "${FILEPATH}"
+# Check if ksnip is available
+if command -v ksnip >/dev/null 2>&1; then
+    ksnip --rectarea --saveto "${FILEPATH}"
+    # Open screenshot in editor before uploading it
+    ksnip "${FILEPATH}"
 elif command -v screencapture >/dev/null 2>&1; then
     # Equivalent to flameshot gui -p. Saves screenshot to FILEPATH
     screencapture -i "${FILEPATH}"
