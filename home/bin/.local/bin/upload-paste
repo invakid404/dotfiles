@@ -1,0 +1,34 @@
+#!/bin/zsh
+
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Upload Paste
+# @raycast.mode silent
+#
+# Optional parameters:
+# @raycast.packageName Scripts
+
+if command -v xclip >/dev/null 2>&1; then
+  copy_command="xclip -selection clipboard"
+elif command -v pbpaste >/dev/null 2>&1; then
+  copy_command="pbcopy"
+else
+  echo "Neither xclip nor pbpaste found. Please install one of them."
+  exit 1
+fi
+
+content=$(./clipboard-to-json)
+
+base_url="https://paste.qilin-qilin.ts.net"
+
+credentials=$(echo "url=${base_url}" | git-credential-keepassxc get)
+username=$(echo "${credentials}" | sed -n 's/^username=//p')
+password=$(echo "${credentials}" | sed -n 's/^password=//p')
+
+login_body=$(jq -n --arg user "${username}" --arg pass "${password}" '{username: $user, password: $pass}')
+token=$(curl -XPOST -H "Content-Type: application/json" "${base_url}"/api/login -d "${login_body}" | jq -r '.token')
+
+paste_body='{"title": "new paste", "content":'"${content}"'}'
+
+result=$(curl -XPOST -H "Authorization: Bearer ${token}" -H "Content-Type: application/json" "${base_url}"/api/ -d "${paste_body}" | jq -r '.url')
+echo "${result}" | $copy_command
