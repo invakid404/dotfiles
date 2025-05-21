@@ -61,3 +61,7 @@ formatter = { command = "refmt" }
 [language-server]
 ocamllsp = { command = "esy", args = ["ocamllsp"] }
 
+[[language]]
+name = "elm"
+auto-format = true
+formatter = { command = "elm-format", args = ["--stdin"] }
