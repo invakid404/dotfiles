@@ -28,7 +28,7 @@ password=$(echo "${credentials}" | sed -n 's/^password=//p')
 login_body=$(jq -n --arg user "${username}" --arg pass "${password}" '{username: $user, password: $pass}')
 token=$(curl -XPOST -H "Content-Type: application/json" "${base_url}"/api/login -d "${login_body}" | jq -r '.token')
 
-paste_body='{"title": "new paste", "content":'"${content}"'}'
+paste_body='{"content":'"${content}"'}'
 
 result=$(curl -XPOST -H "Authorization: Bearer ${token}" -H "Content-Type: application/json" "${base_url}"/api/ -d "${paste_body}" | jq -r '.url')
 echo "${result}" | $copy_command
