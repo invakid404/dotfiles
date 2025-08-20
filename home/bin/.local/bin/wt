@@ -1,0 +1,68 @@
+#!/bin/zsh
+
+set -e
+
+if (( $# != 1 )); then
+    echo "Usage: $0 <branch-name>"
+    exit 1
+fi
+
+typeset -A items
+
+items=(
+    ["./.junie"]="clone"
+    ["./node_modules"]="symlink"
+    ["./.env"]="symlink"
+    ["./.env.local"]="symlink"
+)
+
+git worktree prune
+
+BRANCH="$1"
+FRIENDLY_BRANCH=$(echo "$BRANCH" | tr '/' '-')
+CURRENT_BASENAME=$(basename "$(pwd)")
+
+WORKTREE_PATH="../$CURRENT_BASENAME-$FRIENDLY_BRANCH"
+
+# Check if the branch exists
+if git rev-parse --verify "$BRANCH" >/dev/null 2>&1; then
+    # Branch exists, create worktree without -b
+    echo "Branch $BRANCH exists. Creating worktree at $WORKTREE_PATH..."
+    git worktree add "$WORKTREE_PATH" "$BRANCH"
+else
+    # Branch does not exist, create it with -b
+    echo "Branch $BRANCH does not exist. Creating new branch and worktree at $WORKTREE_PATH..."
+    git worktree add -b "$BRANCH" "$WORKTREE_PATH"
+fi
+
+# Iterate over the items and clone or symlink them
+for src in "${(k)items[@]}"; do
+    if [[ -e "$src" ]]; then
+        # Compute relative path by removing leading './' (preserves nested structure)
+        relative="${src#./}"
+        target="$WORKTREE_PATH/$relative"
+
+        # Create parent directories for the target if needed
+        mkdir -p "$(dirname "$target")"
+
+        method="${items[$src]}"
+        if [[ "$method" = "clone" ]]; then
+            echo "Cloning '$src' to $target using APFS clone..."
+            if [[ -d "$src" ]]; then
+                cp -Rc "$src" "$target"
+            else
+                cp -c "$src" "$target"
+            fi
+        elif [[ "$method" = "symlink" ]]; then
+            echo "Symlinking '$src' to $target..."
+            ln -s "$(realpath "$src")" "$target"  # Use realpath for reliable absolute path
+        else
+            echo "Unknown method '$method' for '$src'. Skipping."
+        fi
+    fi
+done
+
+echo "Opening $WORKTREE_PATH in WebStorm..."
+webstorm "$WORKTREE_PATH"
+
+cd "$WORKTREE_PATH" && exec "$SHELL"
