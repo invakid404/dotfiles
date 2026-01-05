@@ -71,3 +71,11 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     kitty-integration
     unfunction kitty-integration
 fi
+
+# pnpm
+export PNPM_HOME="/Users/inva/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
