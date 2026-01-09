@@ -11,7 +11,6 @@ typeset -A items
 
 items=(
     ["./.junie"]="clone"
-    ["./.windmill-local"]="clone"
     ["./windmill/.wm-index"]="clone"
     ["./node_modules"]="symlink"
     ["./.env"]="symlink"
