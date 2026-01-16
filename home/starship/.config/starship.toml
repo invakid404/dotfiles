@@ -117,3 +117,6 @@ symbol = "swift "
 
 [zig]
 symbol = "zig "
+
+[bun]
+symbol = "bun "
