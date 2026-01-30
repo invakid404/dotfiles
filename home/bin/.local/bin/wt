@@ -15,6 +15,7 @@ items=(
     ["./node_modules"]="symlink"
     ["./.env"]="symlink"
     ["./.env.local"]="symlink"
+    ["./windmill-local.user.yaml"]="symlink"
 )
 
 git worktree prune
