@@ -79,3 +79,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Android SDK
+export ANDROID_HOME=/opt/homebrew/share/android-commandlinetools
+export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
